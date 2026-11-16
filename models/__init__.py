@@ -20,3 +20,16 @@ engine = create_async_engine(
     # 连接前是否预检查（默认为False）
     pool_pre_ping=True,
 )
+
+AsyncSessionFactory = sessionmaker(
+    # Engine或者其子类对象（这里是AsyncEngine）
+    bind=engine,
+    # Session类的代替（默认是Session类）
+    class_=AsyncSession,
+    # 是否在查找之前执行flush操作（默认是True）
+    autoflush=True,
+    # 是否在执行commit操作后Session就过期（默认是True）
+    expire_on_commit=False
+)
+
+Base = declarative_base()
