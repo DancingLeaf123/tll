@@ -33,3 +33,6 @@ AsyncSessionFactory = sessionmaker(
 )
 
 Base = declarative_base()
+
+# 导入模型，确保 alembic autogenerate 能通过 Base.metadata 拿到所有表
+from .user import User  # noqa: E402,F401
