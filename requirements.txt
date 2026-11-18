@@ -1,3 +1,9 @@
 SQLAlchemy>=2.0
 aiomysql
 alembic>=1.13
+greenlet>=3.0
+
+# gRPC
+grpcio>=1.68
+grpcio-tools>=1.68
+protobuf>=5.28
