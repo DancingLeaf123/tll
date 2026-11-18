@@ -17,6 +17,8 @@ def generate_snowflake_id():
 
 class User(Base):
     __tablename__ = 'user'
+    serialize_only = ('id', 'mobile')
+    serialize_rules = ('-password')
     id = Column(BigInteger, primary_key=True, default=generate_snowflake_id)
     mobile = Column(String(20), unique=True, index=True)
     username = Column(String(20), default=generate_username)
