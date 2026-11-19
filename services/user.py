@@ -1,7 +1,6 @@
 from models import AsyncSessionFactory, User
 import grpc
-import user_pb2
-import user_pb2_grpc
+from protos import user_pb2, user_pb2_grpc
 import sqlalchemy.exc
 
 class UserService(user_pb2_grpc.UserServicer):

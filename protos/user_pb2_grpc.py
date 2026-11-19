@@ -4,7 +4,7 @@ import grpc
 import warnings
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from . import user_pb2 as user__pb2
+from protos import user_pb2 as protos_dot_user__pb2
 
 GRPC_GENERATED_VERSION = '1.85.3'
 GRPC_VERSION = grpc.__version__
@@ -19,7 +19,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in user_pb2_grpc.py depends on'
+        + ' but the generated code in protos/user_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -37,48 +37,48 @@ class UserStub:
         """
         self.CreateUser = channel.unary_unary(
                 '/User/CreateUser',
-                request_serializer=user__pb2.CreateUserRequest.SerializeToString,
-                response_deserializer=user__pb2.UserInfoResponse.FromString,
+                request_serializer=protos_dot_user__pb2.CreateUserRequest.SerializeToString,
+                response_deserializer=protos_dot_user__pb2.UserInfoResponse.FromString,
                 _registered_method=True)
         self.GetUserById = channel.unary_unary(
                 '/User/GetUserById',
-                request_serializer=user__pb2.IdRequest.SerializeToString,
-                response_deserializer=user__pb2.UserInfoResponse.FromString,
+                request_serializer=protos_dot_user__pb2.IdRequest.SerializeToString,
+                response_deserializer=protos_dot_user__pb2.UserInfoResponse.FromString,
                 _registered_method=True)
         self.GetUserByMobile = channel.unary_unary(
                 '/User/GetUserByMobile',
-                request_serializer=user__pb2.MobileRequest.SerializeToString,
-                response_deserializer=user__pb2.UserInfoResponse.FromString,
+                request_serializer=protos_dot_user__pb2.MobileRequest.SerializeToString,
+                response_deserializer=protos_dot_user__pb2.UserInfoResponse.FromString,
                 _registered_method=True)
         self.UpdateAvatar = channel.unary_unary(
                 '/User/UpdateAvatar',
-                request_serializer=user__pb2.AvatarRequest.SerializeToString,
+                request_serializer=protos_dot_user__pb2.AvatarRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.UpdateUsername = channel.unary_unary(
                 '/User/UpdateUsername',
-                request_serializer=user__pb2.UsernameRequest.SerializeToString,
+                request_serializer=protos_dot_user__pb2.UsernameRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.UpdatePassword = channel.unary_unary(
                 '/User/UpdatePassword',
-                request_serializer=user__pb2.PasswordRequest.SerializeToString,
+                request_serializer=protos_dot_user__pb2.PasswordRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.GetUserList = channel.unary_unary(
                 '/User/GetUserList',
-                request_serializer=user__pb2.PageRequest.SerializeToString,
-                response_deserializer=user__pb2.UserListResponse.FromString,
+                request_serializer=protos_dot_user__pb2.PageRequest.SerializeToString,
+                response_deserializer=protos_dot_user__pb2.UserListResponse.FromString,
                 _registered_method=True)
         self.VerifyUser = channel.unary_unary(
                 '/User/VerifyUser',
-                request_serializer=user__pb2.VerifyUserRequest.SerializeToString,
-                response_deserializer=user__pb2.UserInfoResponse.FromString,
+                request_serializer=protos_dot_user__pb2.VerifyUserRequest.SerializeToString,
+                response_deserializer=protos_dot_user__pb2.UserInfoResponse.FromString,
                 _registered_method=True)
         self.GetOrCreateUserByMobile = channel.unary_unary(
                 '/User/GetOrCreateUserByMobile',
-                request_serializer=user__pb2.MobileRequest.SerializeToString,
-                response_deserializer=user__pb2.UserInfoResponse.FromString,
+                request_serializer=protos_dot_user__pb2.MobileRequest.SerializeToString,
+                response_deserializer=protos_dot_user__pb2.UserInfoResponse.FromString,
                 _registered_method=True)
 
 
@@ -144,48 +144,48 @@ def add_UserServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateUser': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateUser,
-                    request_deserializer=user__pb2.CreateUserRequest.FromString,
-                    response_serializer=user__pb2.UserInfoResponse.SerializeToString,
+                    request_deserializer=protos_dot_user__pb2.CreateUserRequest.FromString,
+                    response_serializer=protos_dot_user__pb2.UserInfoResponse.SerializeToString,
             ),
             'GetUserById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserById,
-                    request_deserializer=user__pb2.IdRequest.FromString,
-                    response_serializer=user__pb2.UserInfoResponse.SerializeToString,
+                    request_deserializer=protos_dot_user__pb2.IdRequest.FromString,
+                    response_serializer=protos_dot_user__pb2.UserInfoResponse.SerializeToString,
             ),
             'GetUserByMobile': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserByMobile,
-                    request_deserializer=user__pb2.MobileRequest.FromString,
-                    response_serializer=user__pb2.UserInfoResponse.SerializeToString,
+                    request_deserializer=protos_dot_user__pb2.MobileRequest.FromString,
+                    response_serializer=protos_dot_user__pb2.UserInfoResponse.SerializeToString,
             ),
             'UpdateAvatar': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAvatar,
-                    request_deserializer=user__pb2.AvatarRequest.FromString,
+                    request_deserializer=protos_dot_user__pb2.AvatarRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'UpdateUsername': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateUsername,
-                    request_deserializer=user__pb2.UsernameRequest.FromString,
+                    request_deserializer=protos_dot_user__pb2.UsernameRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'UpdatePassword': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdatePassword,
-                    request_deserializer=user__pb2.PasswordRequest.FromString,
+                    request_deserializer=protos_dot_user__pb2.PasswordRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'GetUserList': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserList,
-                    request_deserializer=user__pb2.PageRequest.FromString,
-                    response_serializer=user__pb2.UserListResponse.SerializeToString,
+                    request_deserializer=protos_dot_user__pb2.PageRequest.FromString,
+                    response_serializer=protos_dot_user__pb2.UserListResponse.SerializeToString,
             ),
             'VerifyUser': grpc.unary_unary_rpc_method_handler(
                     servicer.VerifyUser,
-                    request_deserializer=user__pb2.VerifyUserRequest.FromString,
-                    response_serializer=user__pb2.UserInfoResponse.SerializeToString,
+                    request_deserializer=protos_dot_user__pb2.VerifyUserRequest.FromString,
+                    response_serializer=protos_dot_user__pb2.UserInfoResponse.SerializeToString,
             ),
             'GetOrCreateUserByMobile': grpc.unary_unary_rpc_method_handler(
                     servicer.GetOrCreateUserByMobile,
-                    request_deserializer=user__pb2.MobileRequest.FromString,
-                    response_serializer=user__pb2.UserInfoResponse.SerializeToString,
+                    request_deserializer=protos_dot_user__pb2.MobileRequest.FromString,
+                    response_serializer=protos_dot_user__pb2.UserInfoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -213,8 +213,8 @@ class User:
             request,
             target,
             '/User/CreateUser',
-            user__pb2.CreateUserRequest.SerializeToString,
-            user__pb2.UserInfoResponse.FromString,
+            protos_dot_user__pb2.CreateUserRequest.SerializeToString,
+            protos_dot_user__pb2.UserInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -240,8 +240,8 @@ class User:
             request,
             target,
             '/User/GetUserById',
-            user__pb2.IdRequest.SerializeToString,
-            user__pb2.UserInfoResponse.FromString,
+            protos_dot_user__pb2.IdRequest.SerializeToString,
+            protos_dot_user__pb2.UserInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -267,8 +267,8 @@ class User:
             request,
             target,
             '/User/GetUserByMobile',
-            user__pb2.MobileRequest.SerializeToString,
-            user__pb2.UserInfoResponse.FromString,
+            protos_dot_user__pb2.MobileRequest.SerializeToString,
+            protos_dot_user__pb2.UserInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -294,7 +294,7 @@ class User:
             request,
             target,
             '/User/UpdateAvatar',
-            user__pb2.AvatarRequest.SerializeToString,
+            protos_dot_user__pb2.AvatarRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
             channel_credentials,
@@ -321,7 +321,7 @@ class User:
             request,
             target,
             '/User/UpdateUsername',
-            user__pb2.UsernameRequest.SerializeToString,
+            protos_dot_user__pb2.UsernameRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
             channel_credentials,
@@ -348,7 +348,7 @@ class User:
             request,
             target,
             '/User/UpdatePassword',
-            user__pb2.PasswordRequest.SerializeToString,
+            protos_dot_user__pb2.PasswordRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
             channel_credentials,
@@ -375,8 +375,8 @@ class User:
             request,
             target,
             '/User/GetUserList',
-            user__pb2.PageRequest.SerializeToString,
-            user__pb2.UserListResponse.FromString,
+            protos_dot_user__pb2.PageRequest.SerializeToString,
+            protos_dot_user__pb2.UserListResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -402,8 +402,8 @@ class User:
             request,
             target,
             '/User/VerifyUser',
-            user__pb2.VerifyUserRequest.SerializeToString,
-            user__pb2.UserInfoResponse.FromString,
+            protos_dot_user__pb2.VerifyUserRequest.SerializeToString,
+            protos_dot_user__pb2.UserInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -429,8 +429,8 @@ class User:
             request,
             target,
             '/User/GetOrCreateUserByMobile',
-            user__pb2.MobileRequest.SerializeToString,
-            user__pb2.UserInfoResponse.FromString,
+            protos_dot_user__pb2.MobileRequest.SerializeToString,
+            protos_dot_user__pb2.UserInfoResponse.FromString,
             options,
             channel_credentials,
             insecure,
