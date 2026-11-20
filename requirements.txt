@@ -7,3 +7,5 @@ greenlet>=3.0
 grpcio>=1.68
 grpcio-tools>=1.68
 protobuf>=5.28
+grpc-interceptor>=0.15
+sqlalchemy-serializer>=1.6

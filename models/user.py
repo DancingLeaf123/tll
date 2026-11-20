@@ -1,5 +1,6 @@
 from . import Base
 from sqlalchemy import Column, BigInteger, String, Boolean, DateTime
+from sqlalchemy_serializer import SerializerMixin
 import string
 import random
 from utils.snowflake.snowflake import Snowflake
@@ -15,14 +16,14 @@ def generate_snowflake_id():
     new_id = snowflake.get_id()
     return new_id
 
-class User(Base):
+class User(SerializerMixin, Base):
     __tablename__ = 'user'
     serialize_only = ('id', 'mobile')
-    serialize_rules = ('-password')
+    serialize_rules = ('-password',)
     id = Column(BigInteger, primary_key=True, default=generate_snowflake_id)
     mobile = Column(String(20), unique=True, index=True)
     username = Column(String(20), default=generate_username)
     avatar = Column(String(200), nullable=True)
     is_active = Column(Boolean, nullable=True)
-    is_staff = Column(Boolean, nullable=False)
+    is_staff = Column(Boolean, nullable=False, default=False)
     last_login = Column(DateTime, nullable=True)
