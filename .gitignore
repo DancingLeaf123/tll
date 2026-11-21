@@ -1,0 +1,10 @@
+# 虚拟环境
+tll-venv/
+
+# Python 字节码
+__pycache__/
+*.py[cod]
+
+# 环境配置（含数据库密码等）
+.env
+*.local
