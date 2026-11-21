@@ -1,2 +1,175 @@
 2026-11-21 14:28:27.928 +08:00 | INFO     | main:root:10 - loguru生成的日志
 2026-11-21 14:45:05.295 +08:00 | INFO     | main:root:15 - loguru生成的日志
+2026-11-21 14:52:18.670 +08:00 | SUCCESS  | main:root:15 - 这是success日志！
+2026-11-21 20:35:08.476 +08:00 | ERROR    | fastapi.routing:run_endpoint_function:381 - An error has been caught in function 'run_endpoint_function', process 'MainProcess' (73673), thread 'MainThread' (8662223872):
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from '/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/uvicorn/__init__.py'>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/click/core.py", line 1653, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x103a6f740>
+           └ <Command main>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/click/core.py", line 1560, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x1030c3290>
+         │    └ <function Command.invoke at 0x103a6f420>
+         └ <Command main>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/click/core.py", line 1414, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'host': '127.0.0.1', 'port': 8000, 'app': 'main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload_i...
+           │   │      │    │           └ <click.core.Context object at 0x1030c3290>
+           │   │      │    └ <function main at 0x103c26520>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x103a6e5c0>
+           └ <click.core.Context object at 0x1030c3290>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/click/core.py", line 911, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'host': '127.0.0.1', 'port': 8000, 'app': 'main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload_i...
+           │         └ ()
+           └ <function main at 0x103c26520>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/uvicorn/main.py", line 448, in main
+    run(
+    └ <function run at 0x103c1eca0>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/uvicorn/main.py", line 632, in run
+    server.run()
+    │      └ <function Server.run at 0x103ba9800>
+    └ <uvicorn.server.Server object at 0x103c3b290>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/uvicorn/server.py", line 86, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x1039a4fe0>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x1031250d0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x103c3b290>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x103ba98a0>
+           │           └ <uvicorn.server.Server object at 0x103c3b290>
+           └ <function asyncio_run at 0x103965da0>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/uvicorn/_compat.py", line 30, in asyncio_run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x10576ca90>
+           │      └ <function Runner.run at 0x1037c7f60>
+           └ <asyncio.runners.Runner object at 0x103c3a750>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x1037c5b20>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x103c3a750>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x1037c5a80>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x1037c7880>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x103625580>
+    └ <Handle <TaskStepMethWrapper object at 0x105805ba0>()>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x105805ba0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x105805ba0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x105805ba0>()>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/anyio/_core/_tasks.py", line 327, in _run_coro
+    retval = await self._coro
+                   │    └ <member '_coro' of 'TaskHandle' objects>
+                   └ <TaskHandle pending name='starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro' coro=<corou...
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x1058b5a80>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x1057f0250>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x1057f0290>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x1058b5a80>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x1058160d0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1057f0210>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x1057f0250>
+          └ <function wrap_app_handling_exceptions at 0x10562ca40>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1057f0210>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x105781e90>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1057f0210>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method APIRouter.app of <fastapi.routing.APIRouter object at 0x105781e90>>
+          └ <fastapi.routing.APIRouter object at 0x105781e90>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/routing.py", line 2929, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function APIRoute.handle at 0x105659580>
+          └ APIRoute(path='/', name='root', methods=['GET'])
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/routing.py", line 1375, in handle
+    await super().handle(scope, receive, send)
+                         │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+                         │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+                         └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x1057765c0>
+          └ APIRoute(path='/', name='root', methods=['GET'])
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/routing.py", line 175, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b5da0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x1058bca10>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x1058b5e40>
+          └ <function wrap_app_handling_exceptions at 0x10562ca40>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1058b6200>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1037c4360>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x1058b5e40>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/routing.py", line 161, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x1058bca10>
+                     └ <function get_request_handler.<locals>.app at 0x105776700>
+  File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/routing.py", line 762, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x105658680>
+> File "/Users/yezhiwen/Desktop/projects/tll/tll-venv/lib/python3.11/site-packages/fastapi/routing.py", line 381, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {}
+                 │         └ <member 'call' of 'Dependant' objects>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[], dependencies=[], name=None, ca...
+
+  File "/Users/yezhiwen/Desktop/projects/tll/user_api/main.py", line 27, in root
+    c = a/b
+        │ └ 0
+        └ 1
+
+ZeroDivisionError: division by zero
