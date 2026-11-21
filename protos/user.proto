@@ -12,7 +12,6 @@ service User {
   rpc VerifyUser(VerifyUserRequest) returns (UserInfoResponse);
   rpc GetOrCreateUserByMobile(MobileRequest) returns (UserInfoResponse);
 }
-
 message CreateUserRequest {
   string mobile = 1;
 }

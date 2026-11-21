@@ -23,6 +23,7 @@ class User(SerializerMixin, Base):
     id = Column(BigInteger, primary_key=True, default=generate_snowflake_id)
     mobile = Column(String(20), unique=True, index=True)
     username = Column(String(20), default=generate_username)
+    password = Column(String(200), nullable=True)
     avatar = Column(String(200), nullable=True)
     is_active = Column(Boolean, nullable=True)
     is_staff = Column(Boolean, nullable=False, default=False)

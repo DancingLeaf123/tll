@@ -22,13 +22,33 @@ def test_get_user_by_mobile(stub):
     request.mobile = '13510565919'
     response = stub.GetUserByMobile(request)
     print(response)
+    
+def test_update_avatar(stub):
+    request = user_pb2.AvatarRequest()
+    request.id = 2123582071203954688
+    request.avatar = 'https://www.zlkt.net/xx.jpg'
+    response = stub.UpdateAvatar(request)
+    print(response)
+
+def test_update_username(stub):
+    request = user_pb2.UsernameRequest()
+    request.id = 2123582071203954688 
+    request.username = '张三'
+    response = stub.UpdateUsername(request)
+    print(response)
+    
+def test_update_password(stub):
+    request = user_pb2.PasswordRequest()
+    request.id = 2123582071203954688
+    request.password = '123456'
+    response = stub.UpdatePassword(request)
+    print(response)
 
 def main():
     with grpc.insecure_channel('127.0.0.1:5001') as channel:
         stub = user_pb2_grpc.UserStub(channel)
         # test_create_user(stub)
-        test_get_user_by_mobile(stub)
-        
+        test_update_password(stub)
 
 if __name__ == '__main__':
     main()
