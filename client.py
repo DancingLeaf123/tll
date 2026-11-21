@@ -43,12 +43,32 @@ def test_update_password(stub):
     request.password = '123456'
     response = stub.UpdatePassword(request)
     print(response)
+    
+def test_verify_user(stub):
+    request = user_pb2.VerifyUserRequest()
+    request.mobile = '12345678902'
+    request.password = '123456'
+    response = stub.VerifyUser(request)
+    print(response)
+
+def test_get_user_list(stub):
+    request = user_pb2.PageRequest()
+    request.page = 1
+    request.size = 10
+    response = stub.GetUserList(request)
+    print(response)
+    
+def test_get_or_create_user(stub):
+    request = user_pb2.MobileRequest()
+    request.mobile = '12345678905'
+    response = stub.GetOrCreateUserByMobile(request)
+    print(response)
 
 def main():
     with grpc.insecure_channel('127.0.0.1:5001') as channel:
         stub = user_pb2_grpc.UserStub(channel)
         # test_create_user(stub)
-        test_update_password(stub)
+        test_get_or_create_user(stub)
 
 if __name__ == '__main__':
     main()

@@ -5,6 +5,9 @@ import sqlalchemy.exc
 from sqlalchemy import select, update
 from google.protobuf import empty_pb2
 from utils import pwdutil
+import logging
+
+logger = logging.getLogger(__name__)
 
 class UserServicer(user_pb2_grpc.UserServicer):
     async def CreateUser(self, request: user_pb2.CreateUserRequest, context, session):
@@ -95,4 +98,47 @@ class UserServicer(user_pb2_grpc.UserServicer):
                 context.set_details(f'ID{user_id}不存在！')
             else:
                 return empty_pb2.Empty()
-    
+    async def VerifyUser(self, request: user_pb2.VerifyUserRequest, context, session):
+        async with session.begin():
+            mobile = request.mobile
+            password = request.password
+            result = await session.execute(select(User).where(User.mobile==mobile))
+            user = result.scalar()
+            if not user:
+                context.set_code(grpc.StatusCode.NOT_FOUND)
+                context.set_details('该用户不存在！')
+            if not pwdutil.check_password(password, user.password):
+                context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
+                context.set_details('密码错误！')
+            reponse = user_pb2.UserInfoResponse(user=user.to_dict())
+            return reponse
+        
+    async def GetUserList(self, request: user_pb2.PageRequest, context, session):
+        async with session.begin():
+            page = request.page
+            size = request.size
+            # limit/offset
+            offset = (page-1)*size
+            query = await session.execute(select(User).limit(size).offset(offset))
+            # [(User1, ), (User2, ), ...]
+            # [User1, User2, User3, ...]
+            result = query.scalars().fetchall()
+            # 转换为字典
+            users = []
+            for user in result:
+                users.append(user.to_dict())
+            response = user_pb2.UserListResponse(users=users)
+            return response
+        
+        
+    async def GetOrCreateUserByMobile(self, request: user_pb2.MobileRequest, context, session):
+        async with session.begin():
+            mobile = request.mobile
+            query = await session.execute(select(User).where(User.mobile == mobile))
+            user = query.scalar()
+            if not user:
+                user = User(mobile=mobile)
+                session.add(user)
+        response = user_pb2.UserInfoResponse(user=user.to_dict())
+        logger.info('收到！')
+        return response
