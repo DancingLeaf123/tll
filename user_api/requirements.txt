@@ -7,3 +7,6 @@ alibabacloud-dysmsapi20170525>=4.6
 
 # 缓存 / 验证码存储
 redis>=5.0
+
+# JWT 认证
+PyJWT>=2.8

@@ -7,6 +7,7 @@ from schemas.request import LoginModel
 from google.protobuf.json_format import MessageToDict
 import grpc
 from protos import user_pb2, user_pb2_grpc
+from utils.auth import AuthHandler
 
 router = APIRouter(prefix='/user', tags=['用户'])
 
@@ -14,6 +15,7 @@ router = APIRouter(prefix='/user', tags=['用户'])
 # 只有实际调用 /smscode 接口时才报错。
 _sms_sender = None
 tll_redis = TLLRedis()
+auth_handler = AuthHandler()
 
 def get_sms_sender():
     global _sms_sender
@@ -49,8 +51,9 @@ async def login(data: LoginModel):
         request.mobile = mobile
         response = await stub.GetOrCreateUserByMobile(request)
         user = MessageToDict(response.user)
+        tokens = auth_handler.encode_login_token(user['id'])
         return {
             'user': user,
-            'access_token': 'access_token',
-            'refresh_token': 'refresh_token'
+            'access_token': tokens['access_token'],
+            'refresh_token': tokens['refresh_token']
         }
